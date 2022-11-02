@@ -127,7 +127,9 @@ class ToDoList extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <h2 className="mt-5">To Do List</h2>
+            <h1 className="mainTitle">to do list</h1>
+
+            {/* The follwing is a ternary where the first return is a filter.map chain and the second is a <p> tag */}
             {tasks.length > 0 ? tasks.filter(task => {
               if (filter === 'all') {
                 return true;
@@ -137,28 +139,37 @@ class ToDoList extends React.Component {
                 return task.completed;
               }
             }).map((task) => {
-              return <Task key={task.id} task={task} onDelete={this.deleteTask} onComplete={this.toggleComplete} />;
+              return <Task 
+              key={task.id} 
+              task={task} 
+              onDelete={this.deleteTask} 
+              onComplete={this.toggleComplete} />;
             }) : <p className="mt-5">Nothing to Do, Nothing at All</p>}
-            <div className="mt-3">
+
+            <div className="mt-3 checkBox row">
               <label>
-                <input type="checkbox" name="all" checked={filter === "all"} onChange={this.toggleFilter} /> All
+                <input type="checkbox" name="all" checked={filter === "all"} onChange={this.toggleFilter} />
+                All
               </label>
               <label>
-                <input type="checkbox" name="active" checked={filter === "active"} onChange={this.toggleFilter} /> Active
+                <input type="checkbox" name="active" checked={filter === "active"} onChange={this.toggleFilter} />
+                Active
               </label>
               <label>
-                <input type="checkbox" name="completed" checked={filter === "completed"} onChange={this.toggleFilter} /> Completed
+                <input type="checkbox" name="completed" checked={filter === "completed"} onChange={this.toggleFilter} />
+                Completed
               </label>
             </div>
-            <form onSubmit={this.handleSubmit} className="form-inline my-4">
+
+            <form onSubmit={this.handleSubmit} className="form-inline my-4 row">
               <input
                 type="text"
-                className="form-control mr-sm-2 mb-2"
+                className="col-6 form-control mr-sm-2 mb-2 subForm"
                 placeholder="new task"
                 value={new_task}
                 onChange={this.handleChange}
               />
-              <button type="submit" className="btn btn-primary mb-2">Add</button>
+              <button type="submit" className="btn btn-dark mb-2 subButton">Add</button>
             </form>
           </div>
         </div>
@@ -173,17 +184,10 @@ class Task extends React.Component {
     const { id, content, completed } = task;
 
     return (
-      <div className="row mb-1">
-        <p className="col">{content}</p>
-        <button
-          onClick={() => onDelete(id)}
-        >Delete</button>
-        <input
-          className="d-inline-block mt-2"
-          type="checkbox"
-          onChange={() => onComplete(id, completed)}
-          checked={completed}
-        />
+      <div className="eachTask row">
+        <p className="col-6">{content}</p>
+        <input className="col-3" type="checkbox" onChange={() => onComplete(id, completed)} checked={completed} />
+        <button className="col-2 btn btn-dark" onClick={() => onDelete(id)}> Delete </button>
       </div>
     )
   }

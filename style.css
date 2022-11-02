@@ -1,0 +1,62 @@
+#whole {
+  background-color: #F0E5B9  ;
+}
+
+.mainTitle {
+  font-size: 12ch;
+  color: #353231; 
+  font-family: 'Archivo Narrow', sans-serif;
+  margin-bottom: .2em;
+}
+
+.eachTask {
+  margin-bottom: 1em;
+}
+
+.eachTask > p {
+  color: #353231; 
+  font-size: 3ch;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+.eachTask > input {
+  accent-color: #353231;
+  height: 2.5em;
+  width: 2.5em;
+}
+
+.eachTask > button {
+  height: 3em;
+}
+
+.checkBox input {
+  accent-color: #353231;
+  background-color: #F0E5B9;
+  height: 1.5em;
+  width: 1.5em;
+  padding: .5em;
+  margin: 1em;
+  vertical-align: middle;
+}
+
+.checkBox label {
+  font-size: 3ch;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+.subButton {
+  height: 3em;
+  width: 5em;
+}
+
+.subForm {
+  height: 100%;
+}
+
+.subForm::placeholder{
+  font-size: 1.5em;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+
+

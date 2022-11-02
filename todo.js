@@ -159,9 +159,9 @@ var ToDoList = function (_React$Component) {
             'div',
             { className: 'col-12' },
             React.createElement(
-              'h2',
-              { className: 'mt-5' },
-              'To Do List'
+              'h1',
+              { className: 'mainTitle' },
+              'to do list'
             ),
             tasks.length > 0 ? tasks.filter(function (task) {
               if (filter === 'all') {
@@ -172,7 +172,11 @@ var ToDoList = function (_React$Component) {
                 return task.completed;
               }
             }).map(function (task) {
-              return React.createElement(Task, { key: task.id, task: task, onDelete: _this6.deleteTask, onComplete: _this6.toggleComplete });
+              return React.createElement(Task, {
+                key: task.id,
+                task: task,
+                onDelete: _this6.deleteTask,
+                onComplete: _this6.toggleComplete });
             }) : React.createElement(
               'p',
               { className: 'mt-5' },
@@ -180,39 +184,39 @@ var ToDoList = function (_React$Component) {
             ),
             React.createElement(
               'div',
-              { className: 'mt-3' },
+              { className: 'mt-3 checkBox row' },
               React.createElement(
                 'label',
                 null,
                 React.createElement('input', { type: 'checkbox', name: 'all', checked: filter === "all", onChange: this.toggleFilter }),
-                ' All'
+                'All'
               ),
               React.createElement(
                 'label',
                 null,
                 React.createElement('input', { type: 'checkbox', name: 'active', checked: filter === "active", onChange: this.toggleFilter }),
-                ' Active'
+                'Active'
               ),
               React.createElement(
                 'label',
                 null,
                 React.createElement('input', { type: 'checkbox', name: 'completed', checked: filter === "completed", onChange: this.toggleFilter }),
-                ' Completed'
+                'Completed'
               )
             ),
             React.createElement(
               'form',
-              { onSubmit: this.handleSubmit, className: 'form-inline my-4' },
+              { onSubmit: this.handleSubmit, className: 'form-inline my-4 row' },
               React.createElement('input', {
                 type: 'text',
-                className: 'form-control mr-sm-2 mb-2',
+                className: 'col-6 form-control mr-sm-2 mb-2 subForm',
                 placeholder: 'new task',
                 value: new_task,
                 onChange: this.handleChange
               }),
               React.createElement(
                 'button',
-                { type: 'submit', className: 'btn btn-primary mb-2' },
+                { type: 'submit', className: 'btn btn-dark mb-2 subButton' },
                 'Add'
               )
             )
@@ -248,29 +252,22 @@ var Task = function (_React$Component2) {
 
       return React.createElement(
         'div',
-        { className: 'row mb-1' },
+        { className: 'eachTask row' },
         React.createElement(
           'p',
-          { className: 'col' },
+          { className: 'col-6' },
           content
         ),
+        React.createElement('input', { className: 'col-3', type: 'checkbox', onChange: function onChange() {
+            return onComplete(id, completed);
+          }, checked: completed }),
         React.createElement(
           'button',
-          {
-            onClick: function onClick() {
+          { className: 'col-2 btn btn-dark', onClick: function onClick() {
               return onDelete(id);
-            }
-          },
-          'Delete'
-        ),
-        React.createElement('input', {
-          className: 'd-inline-block mt-2',
-          type: 'checkbox',
-          onChange: function onChange() {
-            return onComplete(id, completed);
-          },
-          checked: completed
-        })
+            } },
+          ' Delete '
+        )
       );
     }
   }]);
